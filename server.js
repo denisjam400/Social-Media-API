@@ -3,7 +3,7 @@ const dotenv =  require("dotenv")
 
 const app = express()
 
-dotenv.config({path: "./env/private.env"})
+dotenv.config({path: "./config/private.env"})
 
 const PORT = 9000
 
