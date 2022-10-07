@@ -1,10 +1,10 @@
 const UserModel = require('../models/userModel')
 
 class UserService {
-    createUser(user){
+    createUser(userDetails){
         return new Promise(async (resolve, reject) => {
             try{
-                const user = await UserModel.create(user)
+                const user = await UserModel.create(userDetails)
                 if(!user){
                     return reject({code: 401, msg: 'User not created' })
                 }

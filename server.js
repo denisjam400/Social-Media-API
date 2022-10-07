@@ -1,13 +1,23 @@
 const express = require("express")
 const dotenv =  require("dotenv")
-
+const UserRoutes = require('./routes/user.routes')
 const {connect} = require('./config/db')
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
 
 dotenv.config({path: "./config/private.env"})
 
 connect(process.env.URI)
 
 const app = express()
+
+app.use(bodyParser.json())
+app.use(morgan('dev'))
+
+
+app.use('/smAPI/v1', UserRoutes)
+
+
 
 const PORT = 9000
 
