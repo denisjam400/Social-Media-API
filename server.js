@@ -1,26 +1,23 @@
-const express = require("express")
-const dotenv =  require("dotenv")
-const UserRoutes = require('./routes/user.routes')
-const {connect} = require('./config/db')
-const bodyParser = require('body-parser')
-const morgan = require('morgan')
+const express = require("express");
+const dotenv = require("dotenv");
+const UserRoutes = require("./routes/user.routes");
+const { connect } = require("./config/db");
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
 
-dotenv.config({path: "./config/private.env"})
+dotenv.config({ path: "./config/private.env" });
 
-connect(process.env.URI)
+connect(process.env.URI);
 
-const app = express()
+const app = express();
 
-app.use(bodyParser.json())
-app.use(morgan('dev'))
+app.use(bodyParser.json());
+app.use(morgan("dev"));
 
+app.use("/", UserRoutes);
 
-app.use('/smAPI/v1', UserRoutes)
+const PORT = 9000;
 
-
-
-const PORT = 9000
-
-app.listen(process.env.PORT, ()=>{
-    console.log(`App Is Running On PORT:${PORT}`)
-})
+app.listen(process.env.PORT, () => {
+  console.log(`App Is Running On PORT:${PORT}`);
+});

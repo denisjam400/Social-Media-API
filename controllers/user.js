@@ -37,3 +37,20 @@ module.exports.updateUser = async (req, res) => {
     });
   }
 };
+module.exports.deleteUser = async (req, res) => {
+  try {
+    const user = await User.deleteUser(req.params.id);
+
+    if (user) {
+      res.status(201).json({
+        success: true,
+        user,
+      });
+    }
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      message: e.message,
+    });
+  }
+};
