@@ -31,6 +31,18 @@ class UserService {
         })
     }
 
+    getAllUsers(){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const user = await UserModel.find()
+
+                return resolve(user)
+            }
+            catch(err){
+                return reject(err)
+            }
+        })
+    }
 
     updateUser(userid, body){
         return new Promise(async (resolve, reject) => {

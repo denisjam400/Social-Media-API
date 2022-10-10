@@ -42,3 +42,40 @@ module.exports.updateUser = async (req, res) => {
     });
   }
 };
+
+module.exports.getAllUser = async (req, res) => {
+  try {
+    const user = await User.getAllUsers();
+
+    if (user) {
+      res.status(201).json({
+        success: true,
+        user,
+      });
+    }
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      message: e.message,
+    });
+  }
+};
+
+module.exports.getUser = async (req, res) => {
+  try {
+    const user = await User.getUser(req.params.id);
+
+    if (user) {
+      res.status(200).json({
+        success: true,
+        user,
+      });
+    }
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      message: e.message,
+    });
+  }
+};
+
