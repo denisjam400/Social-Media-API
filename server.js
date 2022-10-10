@@ -1,6 +1,7 @@
 const express = require("express")
 const dotenv =  require("dotenv")
 const UserRoutes = require('./routes/user.routes')
+const PostRoutes = require('./routes/post.routes')
 const {connect} = require('./config/db')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -15,8 +16,8 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 
 
-app.use('/smAPI/v1', UserRoutes)
-
+app.use('/smAPI/v1/user', UserRoutes)
+app.use('/smAPI/v1/posts', PostRoutes)
 
 
 const PORT = 9000
