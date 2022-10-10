@@ -73,7 +73,7 @@ module.exports.deletepost = async (req, res, next) => {
   } catch (e) {
     res.status(500).json({
       success: false,
-      message: e.message,
+      message: e.msg,
     });
     next()
   }
